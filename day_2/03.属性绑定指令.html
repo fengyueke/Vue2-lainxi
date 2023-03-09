@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 给文本框动态绑定提示  -->
+        <input type="text" placeholder="tips">
+        <hr>
+        <!--  需要用到 v-bind 属性绑定 -->
+        <input type="text" v-bind:placeholder="tips">
+        <hr>
+        <!-- v-bind 可以简化成 : -->
+        <img :src="photo" alt="">
+        <hr>
+        <!-- {{}}  有运算，调用方法，拼接字符串的功能-->
+        <div>1 + 2 的结果是 {{ 1+2 }}</div>
+        <div>{{ tips }} 反转的结果是 {{ tips.split('').reverse().join('') }}</div>
+        <!-- 在v-bind绑定期间，如果绑定内容需要进行动态拼接，字符串外需要用单引号拼接 -->
+        <div :title="'box'+id">这是一个 div</div>
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                tips: '请输入用户名',
+                photo: './images/logo.png',
+                id: 5
+            }
+        });
+    </script>
+</body>
+
+</html>

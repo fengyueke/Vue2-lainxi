@@ -1,0 +1,2 @@
+--legacy-peer-deps   优雅的安装
+--force 强制暗转

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-text="username"></p>
+        <p v-text="sex">性别</p>
+        <!-- v-text 会覆盖原内容 -->
+        <hr>
+        <!-- {{ }} 插值表达式是内容的占位符，不会覆盖原内容，用的较多-->
+        <p>姓名：{{ username }}</p>
+        <p>性别：{{ sex }}</p>
+        <hr>
+        <!-- 占位符不能够识别标签 -->
+        <p>{{ info }}</p>
+        <hr>
+        <!-- v-html 可以把带有标签的字符串，渲染成真正的页面内容 -->
+        <p v-html="info"></p>
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                username: 'zhangsan',
+                sex: '女',
+                info: '<h4 style="color:red;font-weight:bold;">欢迎大家来学习 vue</h4>'
+            }
+        });
+    </script>
+</body>
+
+</html>

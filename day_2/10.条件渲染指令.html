@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-if的元素条件不满足时 会被直接删除 -->
+        <!-- 如果刚进入页面时，某些元素默认不需要被展示，而且后面这个元素也很可能不需要被展示，此时v-if的性能会更好 -->
+        <p v-if="flag">这是v-if控制的元素</p>
+        <!-- v-show的元素不满足时 会被display:none 隐藏掉 -->
+        <!-- 如果需要频繁的切换元素的显示状态，用v-show 性能会更好 -->
+        <p v-show="flag">这是v-show控制的元素</p>
+        <hr>
+        <div v-if="type==='A'">优秀</div>
+        <div v-else-if="type==='B'">良好</div>
+        <div v-else-if="type==='C'">一般</div>
+        <div v-else="type">差</div>
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                flag: true,
+                type: 'A'
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>count的值是 {{ count }}</p>
+        <!-- 点击按钮 count的值+1 -->
+        <!-- 通过 v-on:事件  绑定元素 -->
+        <button v-on:click="add(1)">+1</button>
+        <!-- v-on 可以简写为@ -->
+        <button @click="sub(1)">-1</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                add: function(n) {
+                    // console.log(vm);
+                    // vm.count += 1;
+                    // console.log(vm === this);
+                    // 一般使用this
+                    this.count += n;
+                },
+                sub(n) {
+                    this.count -= n;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

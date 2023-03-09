@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 如果不加.number 当值改变时会变成字符串，从而会是字符串的拼接，不符合我们的需求 -->
+        <input type="text" v-model="n1"> + <input type="text" v-model="n2">={{ n1+n2 }}
+        <hr>
+        <input type="text" v-model.number="n3"> + <input type="text" v-model.number="n4">={{ n3+n4 }}
+        <hr>
+        <!-- 获取表单时不希望用户前后有空格的存在，所以需要用到.trim修饰符去去掉空格 -->
+        <input type="text" v-model.trim="username">
+        <button @click="showName">获取用户名</button>
+        <hr>
+        <!-- 不让input实时更新,相当于防抖，.lazy -->
+        <input type="text" v-model.lazy="username">
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                username: 'zhangsan',
+                sex: '女',
+                n1: 1,
+                n2: 2,
+                n3: 1,
+                n4: 2
+            },
+            methods: {
+                showName() {
+                    console.log(`用户名是:"${this.username}"`);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

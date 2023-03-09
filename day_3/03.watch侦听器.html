@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="username">
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                username: ''
+            },
+            // 所有的侦听器，都应定义到watch中
+            watch: {
+                // 侦听器本质是函数，要侦听哪个数据的变化，就将数据名作为方法名即可
+                // 新值在前，旧值在后
+                username(newName, oldName) {
+                    $.get('https://escook.cn/api/finduser/' + newName, function(res) {
+                        console.log(res);
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

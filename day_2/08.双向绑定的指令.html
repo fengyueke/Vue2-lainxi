@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>用户名是: {{ username }}</p>
+        <!-- v-model 实现双向绑定 -->
+        <input type="text" v-model="username">
+        <hr>
+        <!-- 使用v-bind只能接受数据源的渲染，而不能影响到数据源 -->
+        <input type="text" :value="username">
+        <hr>
+        <!-- 并没有显示，v-model只能和表单元素运用 -->
+        <!-- <div v-model="username"></div> -->
+        <hr>
+        <select v-model="city">
+            <option value="">请选择你所在的城市</option>
+            <option value="1">洛阳</option>
+            <option value="2">濮阳</option>
+            <option value="3">信阳</option>
+        </select>
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                username: 'zhangsan',
+                sex: '女',
+                city: ''
+            }
+        });
+    </script>
+</body>
+
+</html>

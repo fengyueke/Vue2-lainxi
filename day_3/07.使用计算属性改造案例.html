@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>R: <input type="text" v-model="r"></p>
+        <p>G: <input type="text" v-model="g"></p>
+        <p>B: <input type="text" v-model="b"></p>
+        <hr>
+        <div class="box" :style="{backgroundColor:rgb   }">{{ rgb }}</div>
+        <button @click="show">按钮</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                r: 0,
+                g: 0,
+                b: 0
+            },
+            methods: {
+                show() {
+                    console.log(this.rgb);
+                }
+            },
+            // 所有的计算属性，都要定义在computed中
+            // 计算属性在定义的时候，要定义成 方法 格式
+            computed: {
+                // 虽然声明的格式是方法格式，但使用的时候是属性值的存在
+                rgb() {
+                    return `rgb(${this.r},${this.g},${this.b})`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

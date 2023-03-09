@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="info.username">
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    username: 'admin'
+                }
+            },
+            // 所有的侦听器，都应定义到watch中
+            watch: {
+                // 如果侦听的是一个对象，如果对象的属性的值发生变化，不会触发侦听器
+                // 通过 deep 选项，可以让侦听器 深度侦听监听对象的每个属性的变化
+                // info(newVal) {
+                //     console.log(newVal);
+                // }
+                // info: {
+                //     handler(newVal) {
+                //         console.log(newVal);
+                //     },
+                //     // 开启深度侦听，info对象的每个属性值发生变化时，都会被触发
+                //     deep: true
+                // }
+
+
+                // 另一种深度侦听
+                'info.username' (newVal) {
+                    console.log(newVal);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

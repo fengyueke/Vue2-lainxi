@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>索引</td>
+                    <td>ID</td>
+                    <td>姓名</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 官方建议 用到v-for 指令，那么一定要绑定一个 :key 属性 且尽量把id作为:key的值 -->
+                <!-- key 的值必须时字符串或数字 -->
+                <!-- key的值是不能重复的，否则就会报错 -->
+                <tr v-for="(item,index) in list" :key="item.id">
+                    <td>{{ index }}</td>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const vm = new Vue({
+            // el的属性是固定写法，表示当前 vm 实例要控制页面上的哪个区域，接受的是一个选择器
+            el: '#app',
+            data: {
+                list: [{
+                    id: 1,
+                    name: '张三'
+                }, {
+                    id: 2,
+                    name: '李四'
+                }, {
+                    id: 3,
+                    name: '王五'
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>

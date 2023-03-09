@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <p>message 的值是 {{ message | capi }}</p>
+    </div>
+
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello vue.js'
+        },
+        // 过滤器函数必须定义在 filters中
+        filters: {
+            // 在filters下的过滤器都是私有过滤器
+            // 过滤器可以通过形参的方式拿到"管道符"前面的值
+            capi(val) {
+                // charAt() 接受索引后，将索引所对应的值拿出来，toUpperCase() 可以将字符串转为大写
+                const first = val.charAt(0).toUpperCase();
+                // splice 截取字符串
+                const other = val.slice(1);
+                return first + other
+            }
+        }
+    })
+</script>
+
+</html>
